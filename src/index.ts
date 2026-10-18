@@ -1,8 +1,14 @@
 import { McpServer } from '@modelcontextprotocol/server';
 import { StdioServerTransport } from '@modelcontextprotocol/server/stdio';
 import * as z from 'zod/v4';
+import { registerMercadonaTools } from './mercadona.js';
+import { loadMercadonaEnv } from './env.js';
+
+loadMercadonaEnv();
 
 const server = new McpServer({ name: 'mercadona-mcp', version: '0.1.0' });
+
+registerMercadonaTools(server);
 
 server.registerTool(
   'greet',
